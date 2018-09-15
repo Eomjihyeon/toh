@@ -16,15 +16,22 @@ export class HeroesComponent implements OnInit {
   isSpecial = true;
 
   heroes  = HEROES;
-
+  selectedHero: Hero;
 
   constructor() { }
 
   ngOnInit() {
   }
 
+
   onSave(e: any){
     console.log(e);
     this.isSpecial = !this.isSpecial;
   }
+
+  onSelected(hero: Hero) {
+    console.log(hero);
+    this.selectedHero = hero;
+  }
+
 }
