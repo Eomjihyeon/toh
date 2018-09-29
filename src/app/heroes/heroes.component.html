@@ -1,23 +1,23 @@
-<h2>{{ hero.name }} Details</h2>
+<!--<h2>{{ hero.name }} Details</h2>
+
 <div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
-<h2>My Heroes</h2>
+<div><span>name: </span>{{hero.name}}</div>-->
 
 <router-outlet></router-outlet>
 
 <ul>
   <li class="d-flex m-1" *ngFor="let h of heroes" (click)="onSelected(h)"
-    [class.selected]="hero===selectedHero">
+      [class.selected]="h === selectedHero"
+      routerLink="/heroes/{{h.id}}">
     <span class="rounded-left p-2 bg-primary text-light">{{h.id}}</span>
     <div class="rounded-right p-2 bg-light text-dark w-50">{{h.name}}</div>
   </li>
 </ul>
 
- <!--heros.component.html 에서 바인딩 [자식프로퍼티]="부모프로퍼티-->
 <!--<app-hero-detail [selectedHero]="selectedHero"></app-hero-detail>-->
 
-<!--
-<div>
+
+<!--<div>
   <button [disabled]="isSpecial">propery binding button</button>
 </div>
 
@@ -33,10 +33,8 @@
   <button (click)="onSave($event)">event binding save button</button>
 </div>
 
-&lt;!&ndash;form쓸때 app.moduls.ts에서 import해야한다&ndash;&gt;
 <div>
   <label>name:
     <input [(ngModel)]="hero.name" placeholder="name">
   </label>
-</div>
--->
+</div>-->

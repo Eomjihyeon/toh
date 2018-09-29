@@ -14,6 +14,6 @@ export class HeroService {
 
   getHeroes(): Observable<Hero[]> {
     // 네트워크를 통해서 모델 정보 획득
-    return of(HEROES).pipe(delay(3000));
+    return of(HEROES).pipe(delay(1000));
   }
 }
