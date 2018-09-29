@@ -24,11 +24,12 @@ export class HeroesComponent implements OnInit {
     // 의존성있게 코딩하는 경우 이렇게 안쓰는게 좋음
     // const heroServie = new HeroService();
     // this.heroes = heroServie.getHeroes();
-  this.heroes = heroService.getHeroes();
-  //private쓰기때문에  this를 쓴다
+    this.heroService.getHeroes()
+      .subscribe(data => this.heroes = data);
   }
 
   ngOnInit() {
+
   }
 
 
