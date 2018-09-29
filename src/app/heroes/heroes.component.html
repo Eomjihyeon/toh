@@ -11,17 +11,10 @@
   </li>
 </ul>
 
-<div *ngIf="selectedHero">
-  <h2>{{ selectedHero.name | uppercase }} Details</h2>
-  <div><span>id: </span>{{selectedHero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedHero.name" placeholder="name">
-    </label>
-  </div>
-</div>
-<!--
+<!-- heros.component.html 에서 바인딩 [자식프로퍼티]="부모프로퍼티-->
+<app-hero-detail [selectedHero]="selectedHero"></app-hero-detail>
 
+<!--
 <div>
   <button [disabled]="isSpecial">propery binding button</button>
 </div>
