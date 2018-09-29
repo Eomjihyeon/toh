@@ -16,4 +16,11 @@ export class HeroService {
     // 네트워크를 통해서 모델 정보 획득
     return of(HEROES).pipe(delay(1000));
   }
+
+  //find 함수??
+  getHero(hero_id: number): Observable<Hero> {
+    return of(HEROES.find(hero => hero.id === hero_id));
+  }
+
+
 }
