@@ -3,16 +3,18 @@
 <div><span>name: </span>{{hero.name}}</div>
 <h2>My Heroes</h2>
 
+<router-outlet></router-outlet>
+
 <ul>
-  <li class="d-flex m-1" *ngFor="let h of heroes" (click)="onSelected(h)">
-    <!--[class.selected]="hero===selectedHero"-->
+  <li class="d-flex m-1" *ngFor="let h of heroes" (click)="onSelected(h)"
+    [class.selected]="hero===selectedHero">
     <span class="rounded-left p-2 bg-primary text-light">{{h.id}}</span>
     <div class="rounded-right p-2 bg-light text-dark w-50">{{h.name}}</div>
   </li>
 </ul>
 
-<!-- heros.component.html 에서 바인딩 [자식프로퍼티]="부모프로퍼티-->
-<app-hero-detail [selectedHero]="selectedHero"></app-hero-detail>
+ <!--heros.component.html 에서 바인딩 [자식프로퍼티]="부모프로퍼티-->
+<!--<app-hero-detail [selectedHero]="selectedHero"></app-hero-detail>-->
 
 <!--
 <div>
