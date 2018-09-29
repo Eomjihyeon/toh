@@ -1,0 +1,4 @@
+<h3>{{name}}</h3>
+<button class="btn btn-success" (click)="vote(true)" [disabled]="didVote">Agree</button>
+<button class="btn btn-danger" (click)="vote(false)" [disabled]="didVote">DisAgree</button>
+<!-- 찬성과 반대를 눌렀을때 이벤트를 발생시키도록   html 에서 작성 -->
