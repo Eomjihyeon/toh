@@ -24,6 +24,8 @@ export class HeroDetailComponent implements OnInit {
         // selectedHero에 대입
 
         this.getHero(+param.hero_id); // +는 스트링을 숫자로 변환
+        // Observable  데이터 발생
+        this.heroService.refresh.next(+param.hero_id);
       });
   }
 

@@ -6,7 +6,7 @@
 <router-outlet></router-outlet>
 
 <ul>
-  <li class="d-flex m-1" *ngFor="let h of heroes" (click)="onSelected(h)"
+  <li class="d-flex m-1" *ngFor="let h of heroes"
       [class.selected]="h === selectedHero"
       routerLink="/heroes/{{h.id}}">
     <span class="rounded-left p-2 bg-primary text-light">{{h.id}}</span>

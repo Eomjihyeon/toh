@@ -21,6 +21,7 @@ export class HeroesComponent implements OnInit {
 
   // 2. 생성자로 이미 등록된 heroService 인스턴스를 주입 받는다.
   // => DI (Dependancy Injection)
+
   constructor(private heroService: HeroService) {
     // 의존성 있게 코딩하는 경우
     // const heroService = new HeroService();
@@ -29,6 +30,12 @@ export class HeroesComponent implements OnInit {
     this.heroService.getHeroes()
       .subscribe(data => {
         this.heroes = data;
+      });
+
+    this.heroService.refresh$
+      .subscribe(data => {
+        console.log("발신자"+data);
+        this.selectedHero = this.heroes.find(item => item.id === data ? true : false);
       });
   }
 
