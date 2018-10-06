@@ -49,7 +49,21 @@ export class JqueryComponent implements OnInit {
         '</td>' +
         '</tr>';
       $('#todo_list').append(todo);
-      //다시 append 로 하나하나씩 모드를 만들고 붙인다
+
+    });
+  }
+
+
+  add_todo() {
+    $.ajax({
+      url: 'http://www.javabrain.kr:8080/api/todo',
+      method: 'POST',
+      data: JSON.stringify({todo: $('#input_todo').val(), isFinished: false}),
+      contentType: 'application/json',
+      dataType: 'json',
+      success: function(data) {
+        console.log(data);
+      }
     });
   }
 }

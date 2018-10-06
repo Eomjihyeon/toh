@@ -19,7 +19,7 @@ export class TodoComponent implements OnInit {
   getTodoList() {
     this.heroService.getTodoList()
       .subscribe(body => {
-        console.log('getTodoList', body);
+        console.log(body);
         this.todoList = body;
       });
   }

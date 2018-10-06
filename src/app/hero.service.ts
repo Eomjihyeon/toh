@@ -32,6 +32,6 @@ export class HeroService {
   }
 
   getTodoList(): Observable<TodoVo[]> {
-    return this.http.get<TodoVo[]>('${environment.HOST}/api/todo');
+    return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo`);
   }
 }

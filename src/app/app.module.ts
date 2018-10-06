@@ -17,10 +17,10 @@ const routes: Routes = [
   {path: 'heroes', component: HeroesComponent, children: [
       {path: ':hero_id', component: HeroDetailComponent}
     ]},
-  {path: 'jquery', component: JqueryComponent},
   {path: 'todo', component: TodoComponent},
-
+  {path: 'jquery', component: JqueryComponent}
 ];
+
 
 @NgModule({
   declarations: [
