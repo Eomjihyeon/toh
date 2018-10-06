@@ -14,7 +14,7 @@ export class HeroDetailComponent implements OnInit {
   selectedHero: Hero;
 
   constructor(private route: ActivatedRoute, private heroService: HeroService) {
-    console.log('hero detail Created')
+    console.log('hero detail Created');
     // /heroes/:hero_id 의 hero_id가 바뀔때 생성자는 한번만 호출
     // subscribe 콜백은 데이터가 들어올때마다 호출
     this.route.params
@@ -24,7 +24,7 @@ export class HeroDetailComponent implements OnInit {
         // selectedHero에 대입
 
         this.getHero(+param.hero_id); // +는 스트링을 숫자로 변환
-        // Observable  데이터 발생
+        // Observable 데이터 발생
         this.heroService.refresh.next(+param.hero_id);
       });
   }
