@@ -1,20 +1,17 @@
-<form #myForm="ngForm" (ngSubmit)="addTodo()">
+<form #myForm="ngForm" (submit)="addTodo()">
   <div class="row">
     <div class="col-sm-8">
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="할일을 입력하세요." [(ngModel)]="newTodo.todo"
-               name="todo" #todo="ngModel" required>
-        <div [hidden]="todo.valid" class="alert alert-danger">
-          todo is required
-        </div>
+        <input [(ngModel)]="newTodo.todo" class="form-control"
+               placeholder="할일을 입력하세요." name="todo" #todo="ngModel" required>
       </div>
     </div>
     <div class="col-sm-4">
-      <button type="submit" class="btn btn-primary btn-block" [disabled]="!myForm.form.valid">추가</button>
+      <button type="submit" class="btn btn-primary btn-block"
+              [disabled]="!myForm.form.valid">추가</button>
     </div>
   </div>
 </form>
-
 <table class="table table-striped">
   <thead>
   <tr>
@@ -26,15 +23,31 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let todo of todoList">
-    <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
-    <td>{{todo.todo}}</td>
-    <td>{{todo.created}}</td>
-    <td>{{todo.updated}}</td>
-    <td>
-      <button class="btn btn-success btn-sm">수정</button>
-      <button class="btn btn-danger btn-sm ml-1">삭제</button>
-    </td>
-  </tr>
+  <ng-template ngFor let-item [ngForOf]="todoList">
+    <tr *ngIf="!item.isEdited">
+      <td>{{item.isFinished ? '완료' : '미완료'}}</td>
+      <td>{{item.todo}}</td>
+      <td>{{item.created}}</td>
+      <td>{{item.updated}}</td>
+      <td>
+        <button class="btn btn-success btn-sm" (click)="save(item)">수정</button>
+        <button class="btn btn-danger btn-sm ml-1" (click)="remove(item)">삭제</button>
+      </td>
+    </tr>
+    <tr *ngIf="item.isEdited">
+      <td>
+        <input type="checkbox" [(ngModel)]="item.isFinished">
+      </td>
+      <td [class.todo_canceled]="item.isFinished">
+        <input [(ngModel)]="item.todo">
+      </td>
+      <td>{{item.created}}</td>
+      <td>{{item.updated}}</td>
+      <td>
+        <button class="btn btn-info btn-sm" (click)="modify(item)">저장</button>
+        <button class="btn btn-warning btn-sm ml-1" (click)="restore(item)">취소</button>
+      </td>
+    </tr>
+  </ng-template>
   </tbody>
 </table>

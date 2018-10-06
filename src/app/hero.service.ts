@@ -3,7 +3,7 @@ import {HEROES} from './mock-heroes';
 import {Hero} from './hero';
 import {Observable, of, Subject} from 'rxjs';
 import {delay} from 'rxjs/operators';
-import {HttpClient, HttpHeaderResponse, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {TodoVo} from './domain/todo.vo';
 
@@ -35,14 +35,14 @@ export class HeroService {
     return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo`);
   }
 
-  addTodo(todo:TodoVo): Observable<TodoVo> {
-   const headers = new HttpHeaders();
-   headers.append('Content-Type', 'application/json');
+  addTodo(todo: TodoVo): Observable<TodoVo> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
 
-   const tempTodo ={...todo};
-   delete tempTodo.isFinished;
+    // isFinished 속성이 boolean 타입이기 때문에 명시적으로 속성값을 제거
+    const tempTodo = {...todo};
+    delete tempTodo.isFinished;
 
-    return this.http.post<TodoVo>('${environment.HOST}/api/todo', todo, {headers: headers });
-
+    return this.http.post<TodoVo>(`${environment.HOST}/api/todo`, todo, {headers: headers});
   }
 }
