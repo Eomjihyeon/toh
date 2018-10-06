@@ -35,11 +35,14 @@ export class HeroService {
     return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo`);
   }
 
-  addTodo(todo:TodoVo) {
+  addTodo(todo:TodoVo): Observable<TodoVo> {
    const headers = new HttpHeaders();
    headers.append('Content-Type', 'application/json');
 
-    return this.http.post('${environment.HOST}/api/todo', todo, {headers: headers });
+   const tempTodo ={...todo};
+   delete tempTodo.isFinished;
+
+    return this.http.post<TodoVo>('${environment.HOST}/api/todo', todo, {headers: headers });
 
   }
 }

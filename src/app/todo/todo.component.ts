@@ -9,6 +9,7 @@ import {HeroService} from '../hero.service';
 })
 export class TodoComponent implements OnInit {
   todoList: TodoVo[];
+  newTodo = new TodoVo();
 
   constructor(private heroService: HeroService) { }
 
@@ -22,5 +23,17 @@ export class TodoComponent implements OnInit {
         console.log(body);
         this.todoList = body;
       });
+  }
+
+  addTodo() {
+    this.heroService.addTodo(this.newTodo)
+      .subscribe(body => {
+        console.log(body);
+        // 데이터를 todoList에 추가
+        this.todoList.unshift(body);
+        // inputbox 초기화
+        this.newTodo.todo = null;
+      });
+
   }
 }
