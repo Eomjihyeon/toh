@@ -10,12 +10,14 @@ import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
 import {Routes, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { JqueryComponent } from './jquery/jquery.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'heroes', component: HeroesComponent, children: [
       {path: ':hero_id', component: HeroDetailComponent}
     ]},
+  {path: 'jquery', component: JqueryComponent},
   {path: 'todo', component: TodoComponent},
 
 ];
@@ -28,7 +30,8 @@ const routes: Routes = [
     VotetakerComponent,
     VoterComponent,
     HomeComponent,
-    TodoComponent
+    TodoComponent,
+    JqueryComponent
   ],
 
 
