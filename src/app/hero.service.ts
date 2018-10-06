@@ -15,7 +15,11 @@ export class HeroService {
   refresh = new Subject<number>(); // publisher: next() 함수로 데이터 발생
   refresh$ = this.refresh.asObservable(); // subscriber: subscribe()로 데이터 수신
 
-  constructor(private http: HttpClient) { }
+  headers = new HttpHeaders();
+
+  constructor(private http: HttpClient) {
+    this.headers.append('Content-Type', 'application/json');
+  }
 
   getHeroes(): Observable<Hero[]> {
     // /api/heroes 통해서 모델 정보 획득
@@ -36,13 +40,14 @@ export class HeroService {
   }
 
   addTodo(todo: TodoVo): Observable<TodoVo> {
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-
     // isFinished 속성이 boolean 타입이기 때문에 명시적으로 속성값을 제거
     const tempTodo = {...todo};
     delete tempTodo.isFinished;
 
-    return this.http.post<TodoVo>(`${environment.HOST}/api/todo`, todo, {headers: headers});
+    return this.http.post<TodoVo>(`${environment.HOST}/api/todo`, todo, {headers: this.headers});
+  }
+
+  modifyTodo(todo: TodoVo): Observable<TodoVo> {
+    return this.http.put<TodoVo>(`${environment.HOST}/api/todo`, todo, {headers: this.headers});
   }
 }

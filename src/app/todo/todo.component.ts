@@ -62,4 +62,15 @@ export class TodoComponent implements OnInit {
 
     todo.isEdited = false;
   }
+
+  modify(todo: TodoVo) {
+    this.heroService.modifyTodo(todo)
+      .subscribe(body => {
+        // 기존 데이터에 서버에서 넘어온 객체를 복사
+        Object.assign(todo, body);
+
+        todo.isEdited = false;
+      });
+
+  }
 }

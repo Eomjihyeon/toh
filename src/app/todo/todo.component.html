@@ -1,3 +1,5 @@
+
+
 <form #myForm="ngForm" (submit)="addTodo()">
   <div class="row">
     <div class="col-sm-8">
@@ -36,7 +38,7 @@
       <td>{{todo.created}}</td>
       <td>{{todo.updated}}</td>
       <td>
-        <button class="btn btn-primary btn-sm">저장</button>
+        <button class="btn btn-primary btn-sm" (click)="modify(todo)">저장</button>
         <button class="btn btn-warning btn-sm ml-1" (click)="restore(todo)">취소</button>
       </td>
     </tr>
