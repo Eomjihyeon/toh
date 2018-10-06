@@ -36,4 +36,12 @@ export class TodoComponent implements OnInit {
       });
 
   }
+  //수정 템플릿 변경
+  save(todo:TodoVo) {
+    todo.isEdited = true;
+  }
+
+  restore(item: TodoVo) {
+    item.isEdited = false;
+  }
 }
