@@ -6,6 +6,7 @@ import {delay} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {TodoVo} from './domain/todo.vo';
+import {ResultVo} from './domain/result.vo';
 
 // 1. (root 컴포넌트가 만들어질때) 해당 서비스를 컨테이너에 등록
 @Injectable({
@@ -49,5 +50,9 @@ export class HeroService {
 
   modifyTodo(todo: TodoVo): Observable<TodoVo> {
     return this.http.put<TodoVo>(`${environment.HOST}/api/todo`, todo, {headers: this.headers});
+  }
+
+  removeTodo(todo_id: number): Observable<ResultVo> {
+    return this.http.delete<ResultVo>(environment.HOST + `/api/todo?todo_id=${todo_id}`);
   }
 }
