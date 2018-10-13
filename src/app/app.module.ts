@@ -11,6 +11,7 @@ import { TodoComponent } from './todo/todo.component';
 import {Routes, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -37,6 +38,7 @@ const routes: Routes = [
 
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,

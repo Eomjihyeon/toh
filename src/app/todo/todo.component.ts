@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoVo} from '../domain/todo.vo';
 import {HeroService} from '../hero.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.scss']
+  styleUrls: ['./todo.component.scss'],
+  animations: [
+    trigger('flyInOut', [
+      state('in', style({opacity: 1, transform: 'translate(0, 0)'})),
+      transition('void => in', [
+        style({opacity: 0, transform: 'translate(-100%, 0)'}),
+        animate(300)
+      ]),
+    ])
+  ]
 })
 export class TodoComponent implements OnInit {
   todoList: TodoVo[];

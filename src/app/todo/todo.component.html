@@ -40,8 +40,8 @@
         <button class="btn btn-warning btn-sm ml-1" (click)="restore(todo)">취소</button>
       </td>
     </tr>
-    <!-- 일반 템플릿 -->
-    <tr *ngIf="!todo.isEdited">
+    <!-- 일반 템플릿 + 애니메이션 적용 ts파일에서 정의함-->
+    <tr *ngIf="!todo.isEdited" [@flyInOut] = "'in'">
       <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
       <td>{{todo.todo}}</td>
       <td>{{todo.created}}</td>
