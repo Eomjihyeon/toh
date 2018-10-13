@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-register-hero',
@@ -9,18 +9,19 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 export class RegisterHeroComponent implements OnInit {
   form:FormGroup;
 //html에  formcontrol이름과 동일하게 해야함
-  constructor(private  fb:FormBuilder) {
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      name: null,
-      email: null,
-      sex: null,
-      country: null,
-      address: null,
+      name: [null, Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(20)])],
+      email: [null, Validators.compose([Validators.required, Validators.email])],
+      sex: [null, Validators.required],
+      country: [null, Validators.required],
+      address: null
     });
-
   }
 
   ngOnInit() {
   }
+
+
 
 }
