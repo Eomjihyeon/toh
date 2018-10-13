@@ -10,9 +10,13 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
   animations: [
     trigger('flyInOut', [
       state('in', style({opacity: 1, transform: 'translate(0, 0)'})),
-      transition('void => in', [
+
+      transition('void => in', [ //추가 애니메이션 스타일
         style({opacity: 0, transform: 'translate(-100%, 0)'}),
         animate(300)
+      ]),
+      transition('in => void', [ //삭제 애니메이션 스타일
+        animate(300, style({opacity: '0', transform: 'translate(0, 100%)'}))
       ]),
     ])
   ]
