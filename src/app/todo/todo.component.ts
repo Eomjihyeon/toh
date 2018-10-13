@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TodoVo} from '../domain/todo.vo';
 import {HeroService} from '../hero.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, keyframes, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'app-todo',
@@ -15,9 +15,19 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
         style({opacity: 0, transform: 'translate(-100%, 0)'}),
         animate(300)
       ]),
-      transition('in => void', [ //삭제 애니메이션 스타일
+/*      transition('in => void', [ //삭제 애니메이션 스타일
         animate(300, style({opacity: '0', transform: 'translate(0, 100%)'}))
-      ]),
+      ]),*/
+      transition('in => void', [
+        // animate(300, style({opacity: '0', transform: 'translate(100%, 0)'}))
+        // multi frame transition
+        animate(300, keyframes([
+          style({opacity: 1, transform: 'translateX(0)',     offset: 0}),
+          style({opacity: 1, transform: 'translateX(-50px)', offset: 0.7}),
+          style({opacity: 1, transform: 'translateX(-100px)', offset: 0.8}),
+          style({opacity: 0, transform: 'translateX(100%)',  offset: 1.0})
+        ]))
+      ])
     ])
   ]
 })
