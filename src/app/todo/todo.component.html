@@ -40,9 +40,9 @@
         <button class="btn btn-warning btn-sm ml-1" (click)="restore(todo)">취소</button>
       </td>
     </tr>
-    <!-- 일반 템플릿 + 애니메이션 적용 ts파일에서 정의함-->
+    <!-- 일반 템플릿 -->
     <tr *ngIf="!todo.isEdited" [@flyInOut] = "'in'" appHighlight [highlightColor]="'#C8FFFF'">
-      <td >{{todo.isFinished ? '완료' : '미완료'}}</td>
+      <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
       <td>{{todo.todo}}</td>
       <td>{{todo.created}}</td>
       <td>{{todo.updated}}</td>
@@ -55,3 +55,7 @@
 
   </tbody>
 </table>
+
+{{ 10000}} 원
+{{ 10000 | mydate: '$'}}
+{{ 10000 | mydate: 'yen'}}

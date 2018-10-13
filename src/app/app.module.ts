@@ -13,6 +13,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HighlightDirective } from './highlight.directive';
+import { MydatePipe } from './mydate.pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,7 +35,8 @@ const routes: Routes = [
     HomeComponent,
     TodoComponent,
     JqueryComponent,
-    HighlightDirective
+    HighlightDirective,
+    MydatePipe
   ],
 
 
