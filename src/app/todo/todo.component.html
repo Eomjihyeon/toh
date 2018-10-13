@@ -41,8 +41,8 @@
       </td>
     </tr>
     <!-- 일반 템플릿 + 애니메이션 적용 ts파일에서 정의함-->
-    <tr *ngIf="!todo.isEdited" [@flyInOut] = "'in'">
-      <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
+    <tr *ngIf="!todo.isEdited" [@flyInOut] = "'in'" appHighlight [highlightColor]="'#C8FFFF'">
+      <td >{{todo.isFinished ? '완료' : '미완료'}}</td>
       <td>{{todo.todo}}</td>
       <td>{{todo.created}}</td>
       <td>{{todo.updated}}</td>

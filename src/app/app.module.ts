@@ -12,6 +12,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HighlightDirective } from './highlight.directive';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
     VoterComponent,
     HomeComponent,
     TodoComponent,
-    JqueryComponent
+    JqueryComponent,
+    HighlightDirective
   ],
 
 
