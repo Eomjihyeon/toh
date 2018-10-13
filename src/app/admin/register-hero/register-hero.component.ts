@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdminService} from '../admin.service';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-register-hero',
@@ -10,7 +11,8 @@ import {AdminService} from '../admin.service';
 export class RegisterHeroComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private adminService: AdminService) {
+  constructor(private fb: FormBuilder, private adminService: AdminService,
+              private toaster: ToasterService) {
     this.form = this.fb.group({
       name: [null, Validators.compose([Validators.required, Validators.minLength(3)
         , Validators.maxLength(20)])],
@@ -38,6 +40,15 @@ export class RegisterHeroComponent implements OnInit {
     // 서버에 등록
     const hero = {...this.form.value};
     this.adminService.addHero(hero)
-      .subscribe(body => console.log(body));
+      .subscribe(body => {
+        console.log(body);
+        // 등록이 성공되면 토스트 메시지 띄우고 폼 초기화
+        if (body.result === 0) {
+          this.toaster.pop('success', '성공', '등록되었습니다.');
+          this.form.reset({});
+        } else {
+          this.toaster.pop('danger', '실패', '다시 시도하세요.');
+        }
+      });
   }
 }
