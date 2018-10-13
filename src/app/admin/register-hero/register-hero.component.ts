@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AdminService} from '../admin.service';
@@ -20,6 +21,7 @@ export class RegisterHeroComponent implements OnInit {
       sex: [null, Validators.required],
       country: [null, Validators.required],
       address: null,
+      photo: null
     });
   }
 
@@ -49,6 +51,22 @@ export class RegisterHeroComponent implements OnInit {
         } else {
           this.toaster.pop('danger', '실패', '다시 시도하세요.');
         }
+      });
+  }
+
+  fileUpload(event: any) {
+    console.log(event);
+
+    const formData = new FormData();
+    formData.append('file', event.target.files[0], event.target.files[0].name);
+
+    this.adminService.imageUpload(formData)
+      .subscribe(body => {
+        console.log(body);
+        // 업로드된 링크를 가져와서 화면에 바인딩
+        // 실제 주소: http://eastflag.co.kr:3000 + body.value
+        const url = `http://eastflag.co.kr:3000${body['value']}`;
+        this.form.controls['photo'].setValue(url);
       });
   }
 }

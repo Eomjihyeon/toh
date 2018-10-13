@@ -17,5 +17,8 @@ export class AdminService {
     return this.http.post<ResultVo>(`${environment.HOST}/api/hero`, hero,
       {headers: this.headers});
   }
-}
 
+  imageUpload(formData: FormData): Observable<ResultVo> {
+    return this.http.post<ResultVo>(`http://eastflag.co.kr:8080/api/file`, formData);
+  }
+}
