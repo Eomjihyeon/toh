@@ -9,7 +9,8 @@ import {RouterModule, Routes} from '@angular/router';
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
       {path: 'register', component: RegisterHeroComponent},
-      {path: 'manage', component: ManageHeroComponent}
+      {path: 'manage', component: ManageHeroComponent},
+      {path : '' , redirectTo : '/admin/register'}
     ]}
 ];
 
