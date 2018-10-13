@@ -1,5 +1,7 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import {FormsModule} from '@angular/forms';
@@ -8,7 +10,7 @@ import { VotetakerComponent } from './votetaker/votetaker.component';
 import { VoterComponent } from './voter/voter.component';
 import { HomeComponent } from './home/home.component';
 import { TodoComponent } from './todo/todo.component';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -21,9 +23,11 @@ const routes: Routes = [
       {path: ':hero_id', component: HeroDetailComponent}
     ]},
   {path: 'todo', component: TodoComponent},
-  {path: 'jquery', component: JqueryComponent}
+  {path: 'jquery', component: JqueryComponent},
+  {
+    path: 'admin', loadChildren: './admin/admin.module#AdminModule'
+  }
 ];
-
 
 @NgModule({
   declarations: [
@@ -38,8 +42,6 @@ const routes: Routes = [
     HighlightDirective,
     MydatePipe
   ],
-
-
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -51,4 +53,3 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
