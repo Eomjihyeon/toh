@@ -6,12 +6,13 @@ import { RegisterHeroComponent } from './register-hero/register-hero.component';
 import { ManageHeroComponent } from './manage-hero/manage-hero.component';
 import {RouterModule, Routes} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AdminService} from './admin.service';
 
 const routes: Routes = [
   {path: '', component: IndexComponent, children: [
       {path: 'register', component: RegisterHeroComponent},
       {path: 'manage', component: ManageHeroComponent},
-      {path : '' , redirectTo : '/admin/register'}
+      {path: '', redirectTo: '/admin/register'}
     ]}
 ];
 
@@ -26,6 +27,7 @@ const routes: Routes = [
     DashboardComponent,
     RegisterHeroComponent,
     ManageHeroComponent
-  ]
+  ],
+  providers: [AdminService]
 })
 export class AdminModule { }
